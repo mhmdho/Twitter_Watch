@@ -38,16 +38,21 @@ def get_tweets(account):
 
 
 def get_replies(account):
-  query = "(to:elonmusk) since:2023-02-01"
-  for reply in sntwitter.TwitterSearchScraper(query).get_items():
-    session = Session(engine)
-    result = session.query(models.Replies).filter(
-              models.Replies.id == reply.id).first()
-    if result == None:
-      reply_model = models.Replies(
-                  id = reply.id,
-                  date = reply.date,
-                  username = reply.user.username,
-                  content = reply.rawContent)
-      session.add(reply_model)
-      session.commit()
+  session = Session(engine)
+  the_account = session.query(models.Accounts).filter(
+                  models.Accounts.username == account.lower()).first()
+  if the_account:
+    query = f"(to:{account}) since:2023-02-01"
+    for reply in sntwitter.TwitterSearchScraper(query).get_items():
+      session = Session(engine)
+      result = session.query(models.Replies).filter(
+                models.Replies.id == reply.id).first()
+      if result == None:
+        reply_model = models.Replies(
+                    id = reply.id,
+                    date = reply.date,
+                    username = reply.user.username,
+                    content = reply.rawContent,
+                    tweet_owner_id = the_account.id)
+        session.add(reply_model)
+        session.commit()
