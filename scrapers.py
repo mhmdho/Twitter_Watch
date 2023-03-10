@@ -11,26 +11,30 @@ def get_accounts(accounts_list:list):
               models.Accounts.username == account).first()
     if result == None:
       account_model = models.Accounts(
-                  username = account,
+                  username = account.lower(),
       )
       session.add(account_model)
       session.commit()
 
 
 def get_tweets(account):
-  query = f"(from:{account}) since:2023-02-01 -filter:replies"
-  for tweet in sntwitter.TwitterSearchScraper(query).get_items():
-    session = Session(engine)
-    result = session.query(models.Tweets).filter(
-              models.Tweets.id == tweet.id).first()
-    if result == None:
-      tweet_model = models.Tweets(
-                  id = tweet.id,
-                  date = tweet.date,
-                  username = tweet.user.username,
-                  content = tweet.rawContent)
-      session.add(tweet_model)
-      session.commit()
+  session = Session(engine)
+  the_account = session.query(models.Accounts).filter(
+                  models.Accounts.username == account.lower()).first()
+  if the_account:
+    query = f"(from:{account}) since:2023-02-01 -filter:replies"
+    for tweet in sntwitter.TwitterSearchScraper(query).get_items():
+      result = session.query(models.Tweets).filter(
+                models.Tweets.id == tweet.id).first()
+      if result == None:
+        tweet_model = models.Tweets(
+                    id = tweet.id,
+                    date = tweet.date,
+                    username = tweet.user.username,
+                    content = tweet.rawContent,
+                    owner_id = the_account.id)
+        session.add(tweet_model)
+        session.commit()
 
 
 def get_replies(account):
