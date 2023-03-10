@@ -11,6 +11,7 @@ class Accounts(Base):
   description = Column(String)
 
   actweets = relationship("Tweets", back_populates="tweetowner")
+  acreplies = relationship("Replies", back_populates="rptwowner")
 
 
 class Tweets(Base):
@@ -32,6 +33,9 @@ class Replies(Base):
   date = Column(DateTime)
   username = Column(String)
   content = Column(String)
+  tweet_owner_id = Column(Integer, ForeignKey("Accounts.id"))
+
+  rptwowner = relationship("Accounts", back_populates="acreplies")
 
 
 Base.metadata.create_all(bind=engine)
