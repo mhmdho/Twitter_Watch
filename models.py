@@ -10,7 +10,7 @@ class Accounts(Base):
   username = Column(String)
   description = Column(String)
 
-  actweets = relationship("Tweets", back_populates="owner_id")
+  actweets = relationship("Tweets", back_populates="tweetowner")
 
 
 class Tweets(Base):
@@ -22,6 +22,7 @@ class Tweets(Base):
   content = Column(String)
   owner_id = Column(Integer, ForeignKey("Accounts.id"))
 
+  tweetowner = relationship("Accounts", back_populates="actweets")
 
 
 class Replies(Base):
