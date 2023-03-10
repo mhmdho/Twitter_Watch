@@ -8,7 +8,7 @@ def get_accounts(accounts_list:list):
   for account in accounts_list:
     session = Session(engine)
     result = session.query(models.Accounts).filter(
-              models.Accounts.username == account).first()
+              models.Accounts.username == account.lower()).first()
     if result == None:
       account_model = models.Accounts(
                   username = account.lower(),
