@@ -85,12 +85,13 @@ def audience_api(account: str, db: Session = Depends(get_db)):
   the_account = (db.query(models.Accounts)
                    .filter(models.Accounts.username == account.lower())
                    .first())
-  result = (db.query(models.Replies.username, func.count(models.Replies.username))
+  audience = (db.query(models.Replies.username, func.count(models.Replies.username))
                .having(models.Replies.tweet_owner_id == the_account.id)
                .group_by(models.Replies.username)
-               .order_by(func.count(models.Replies.username).desc())
-               .limit(10)
-           )
+               .order_by(func.count(models.Replies.username).desc()))
+  min_replies = min(dict(audience.limit(10)).values())
+  result = audience.having(func.count(models.Replies.username) >= min_replies)
   return result
-  
+
+
 uvicorn.run(app, port = 8080, host = "0.0.0.0")
