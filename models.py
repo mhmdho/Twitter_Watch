@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
+from sqlalchemy.orm import relationship
 from database import Base, engine
 
 
@@ -9,6 +10,8 @@ class Accounts(Base):
   username = Column(String)
   description = Column(String)
 
+  actweets = relationship("Tweets", back_populates="owner_id")
+
 
 class Tweets(Base):
   __tablename__ = "Tweets"
@@ -17,6 +20,8 @@ class Tweets(Base):
   date = Column(DateTime)
   username = Column(String)
   content = Column(String)
+  owner_id = Column(Integer, ForeignKey("Accounts.id"))
+
 
 
 class Replies(Base):
