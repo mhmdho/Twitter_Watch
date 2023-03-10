@@ -28,7 +28,7 @@ def get_db():
 def tweets_task():
   for item in accounts:
     get_tweets(item)
-    # get_replies(item)
+    get_replies(item)
 
 
 
@@ -41,6 +41,12 @@ def tweets_api(account: str, db: Session = Depends(get_db)):
   the_account = db.query(models.Accounts).filter(
                   models.Accounts.username == account.lower()).first()
   return the_account.actweets
+
+@app.get("/api/v1/{account}/replies")
+def replies_api(account: str, db: Session = Depends(get_db)):
+  the_account = db.query(models.Accounts).filter(
+                  models.Accounts.username == account.lower()).first()
+  return the_account.acreplies
 
 
 uvicorn.run(app, port = 8080, host = "0.0.0.0")
