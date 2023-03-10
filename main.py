@@ -7,8 +7,8 @@ import uvicorn
 import models
 
 
-accounts = ['@alikarimi_ak8', '@elonmusk', '@BarackObama',
-            '@taylorlorenz', '@cathiedwood', '@ylecun']
+accounts = ['alikarimi_ak8', 'elonmusk', 'BarackObama',
+            'taylorlorenz', 'cathiedwood', 'ylecun']
 get_accounts(accounts)
 
 
@@ -25,14 +25,22 @@ def get_db():
 
 @app.on_event("startup")
 @repeat_every(seconds=10)
-def background_task():
-  get_tweets('barackobama')
-  get_replies('barackobama')
+def tweets_task():
+  for item in accounts:
+    get_tweets(item)
+    # get_replies(item)
+
 
 
 @app.get("/api/v1/accounts")
-def read_api(db: Session = Depends(get_db)):
+def accounts_api(db: Session = Depends(get_db)):
   return db.query(models.Accounts).all()
+
+@app.get("/api/v1/{account}/tweets")
+def tweets_api(account: str, db: Session = Depends(get_db)):
+  the_account = db.query(models.Accounts).filter(
+                  models.Accounts.username == account.lower()).first()
+  return the_account.actweets
 
 
 uvicorn.run(app, port = 8080, host = "0.0.0.0")
