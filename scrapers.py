@@ -4,6 +4,19 @@ from database import engine
 import models
 
 
+def get_accounts(accounts_list:list):
+  for account in accounts_list:
+    session = Session(engine)
+    result = session.query(models.Accounts).filter(
+              models.Accounts.username == account).first()
+    if result == None:
+      account_model = models.Accounts(
+                  username = account,
+      )
+      session.add(account_model)
+      session.commit()
+
+
 def get_tweets(account):
   query = f"(from:{account}) since:2023-02-01 -filter:replies"
   for tweet in sntwitter.TwitterSearchScraper(query).get_items():
