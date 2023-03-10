@@ -1,7 +1,8 @@
 import snscrape.modules.twitter as sntwitter
-from sqlalchemy.orm import Session
-from database import engine
 import models
+from database import engine
+from sqlalchemy.orm import Session
+from sentiment import sentiment_analyzer
 
 
 def get_accounts(accounts_list:list):
@@ -32,6 +33,7 @@ def get_tweets(account):
                     date = tweet.date,
                     username = tweet.user.username,
                     content = tweet.rawContent,
+                    sentiment = sentiment_analyzer(tweet.rawContent),
                     owner_id = the_account.id)
         session.add(tweet_model)
         session.commit()
@@ -53,6 +55,7 @@ def get_replies(account):
                     date = reply.date,
                     username = reply.user.username,
                     content = reply.rawContent,
+                    sentiment = sentiment_analyzer(reply.rawContent),
                     tweet_owner_id = the_account.id)
         session.add(reply_model)
         session.commit()
