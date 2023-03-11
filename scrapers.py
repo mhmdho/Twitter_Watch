@@ -56,6 +56,7 @@ def get_replies(account):
                     username = reply.user.username,
                     content = reply.rawContent,
                     sentiment = sentiment_analyzer(reply.rawContent),
+                    tweet_id = reply.inReplyToTweetId,
                     tweet_owner_id = the_account.id)
         session.add(reply_model)
         session.commit()
