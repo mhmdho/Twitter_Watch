@@ -68,19 +68,19 @@ def tweets_task5():
 def accounts_api(db: Session = Depends(get_db)):
   return db.query(models.Accounts).all()
 
-@app.get("/api/v1/{account}/tweets")
+@app.get("/api/v1/tweets/{account}")
 def tweets_api(account: str, db: Session = Depends(get_db)):
   the_account = db.query(models.Accounts).filter(
                   models.Accounts.username == account.lower()).first()
   return the_account.actweets
 
-@app.get("/api/v1/{account}/replies")
+@app.get("/api/v1/replies/{account}")
 def replies_api(account: str, db: Session = Depends(get_db)):
   the_account = db.query(models.Accounts).filter(
                   models.Accounts.username == account.lower()).first()
   return the_account.acreplies
 
-@app.get("/api/v1/{account}/audience")
+@app.get("/api/v1/audience/{account}")
 def audience_api(account: str, db: Session = Depends(get_db)):
   the_account = (db.query(models.Accounts)
                    .filter(models.Accounts.username == account.lower())
@@ -94,7 +94,7 @@ def audience_api(account: str, db: Session = Depends(get_db)):
   result = audience.having(func.count(models.Replies.username) >= min_replies).all()
   return result
 
-@app.get("/api/v1/{account}/sentiment")
+@app.get("/api/v1/sentiment/{account}")
 def sentiment_api(account: str, db: Session = Depends(get_db)):
   the_account = (db.query(models.Accounts)
                    .filter(models.Accounts.username == account.lower())
@@ -108,5 +108,17 @@ def sentiment_api(account: str, db: Session = Depends(get_db)):
                .all()
               )
   return sentiment
+
+@app.get("/api/v1/accounts/sentiment")
+def ac_sentiment_api(db: Session = Depends(get_db)):
+  sentiment = (db.query(models.Accounts.username.label('Username'),
+                        ((func.avg(models.Tweets.sentiment) +
+                         func.avg(models.Replies.sentiment))/2).label('account_sentiment'))
+               .join(models.Tweets).join(models.Replies)
+               .group_by(models.Accounts.username)
+               .all()
+              )
+  return sentiment
+
 
 uvicorn.run(app, port = 8080, host = "0.0.0.0")
