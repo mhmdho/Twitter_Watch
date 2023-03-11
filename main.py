@@ -85,13 +85,28 @@ def audience_api(account: str, db: Session = Depends(get_db)):
   the_account = (db.query(models.Accounts)
                    .filter(models.Accounts.username == account.lower())
                    .first())
-  audience = (db.query(models.Replies.username, func.count(models.Replies.username))
+  audience = (db.query(models.Replies.username.label('User'),
+                       (func.count(models.Replies.username)).label('replies'))
                .having(models.Replies.tweet_owner_id == the_account.id)
                .group_by(models.Replies.username)
                .order_by(func.count(models.Replies.username).desc()))
   min_replies = min(dict(audience.limit(10)).values())
-  result = audience.having(func.count(models.Replies.username) >= min_replies)
+  result = audience.having(func.count(models.Replies.username) >= min_replies).all()
   return result
 
+@app.get("/api/v1/{account}/sentiment")
+def sentiment_api(account: str, db: Session = Depends(get_db)):
+  the_account = (db.query(models.Accounts)
+                   .filter(models.Accounts.username == account.lower())
+                   .first())
+  sentiment = (db.query(models.Replies.tweet_id.label('tweet_ID'),
+                        models.Tweets.sentiment.label('tweet_sentiment'),
+                        (func.avg(models.Replies.sentiment)).label('replies_sentiment'))
+               .join(models.Tweets)
+               .having(models.Replies.tweet_owner_id == the_account.id)
+               .group_by(models.Replies.tweet_id)
+               .all()
+              )
+  return sentiment
 
 uvicorn.run(app, port = 8080, host = "0.0.0.0")
