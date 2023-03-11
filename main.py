@@ -1,5 +1,6 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, Request
 from fastapi_utils.tasks import repeat_every
+from fastapi.templating import Jinja2Templates
 from database import SessionLocal
 from sqlalchemy.orm import Session
 from sqlalchemy import func
@@ -14,6 +15,7 @@ get_accounts(accounts)
 
 
 app = FastAPI()
+templates = Jinja2Templates(directory="templates")
 
 
 def get_db():
