@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Depends, Request
 from fastapi_utils.tasks import repeat_every
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 from database import SessionLocal
 from sqlalchemy.orm import Session
 from sqlalchemy import func
@@ -16,6 +17,7 @@ get_accounts(accounts)
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 def get_db():
@@ -121,6 +123,10 @@ def ac_sentiment_api(db: Session = Depends(get_db)):
                .all()
               )
   return sentiment
+
+@app.get("/")
+async def index(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 
 uvicorn.run(app, port = 8080, host = "0.0.0.0")
