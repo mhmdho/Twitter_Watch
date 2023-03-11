@@ -36,6 +36,7 @@ class Replies(Base):
   username = Column(String)
   content = Column(String)
   sentiment = Column(Float)
+  tweet_id = Column(Integer, ForeignKey("Tweets.id"))
   tweet_owner_id = Column(Integer, ForeignKey("Accounts.id"))
 
   rptwowner = relationship("Accounts", back_populates="acreplies")
