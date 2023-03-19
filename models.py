@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, Float, String, DateTime, ForeignKey
+from sqlalchemy import Column, Integer, Float, String, DateTime, ForeignKey, Boolean
 from sqlalchemy.orm import relationship
 from database import Base, engine
 
@@ -8,8 +8,21 @@ class Accounts(Base):
 
   id = Column(Integer, primary_key=True, index=True)
   username = Column(String)
-  description = Column(String)
   sentiment = Column(Float)
+  name = Column(String)
+  description = Column(String)
+  verified = Column(Boolean)
+  created_at = Column(DateTime)
+  followers_count = Column(Integer)
+  friends_count = Column(Integer)
+  location = Column(String)
+  image = Column(String)
+  tweets_count = Column(Integer)
+  weblink = Column(String)
+  label_desc = Column(String)
+  label_url = Column(String)
+  summary_desc = Column(String)
+  
 
   actweets = relationship("Tweets", back_populates="tweetowner")
   acreplies = relationship("Replies", back_populates="rptwowner")
