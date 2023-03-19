@@ -7,12 +7,31 @@ from sentiment import sentiment_analyzer
 
 def get_accounts(accounts_list:list):
   for account in accounts_list:
+    profile = sntwitter.TwitterUserScraper(account).entity
     session = Session(engine)
     result = session.query(models.Accounts).filter(
               models.Accounts.username == account.lower()).first()
     if result == None:
+      weblink = label_desc = label_url = None
+      if profile.link:
+        weblink = profile.link.url
+      if profile.label:
+        label_desc = profile.label.description
+        label_url = profile.label.url
       account_model = models.Accounts(
                   username = account.lower(),
+                  name = profile.displayname,
+                  description = profile.renderedDescription,
+                  verified = profile.verified,
+                  created_at = profile.created,
+                  followers_count = profile.followersCount,
+                  friends_count = profile.friendsCount,
+                  location = profile.location,
+                  image = (profile.profileImageUrl).replace('normal', '400x400'),
+                  tweets_count = profile.statusesCount,
+                  weblink = weblink,
+                  label_desc = label_desc,
+                  label_url = label_url,
       )
       session.add(account_model)
       session.commit()
