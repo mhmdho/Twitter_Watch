@@ -128,5 +128,9 @@ def ac_sentiment_api(db: Session = Depends(get_db)):
 async def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
+@app.get("/about-me")
+async def about_me(request: Request):
+    return templates.TemplateResponse("about_me.html", {"request": request})
+
 
 uvicorn.run(app, port = 8080, host = "0.0.0.0")
