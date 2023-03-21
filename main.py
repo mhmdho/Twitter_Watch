@@ -76,7 +76,7 @@ def accounts_API(db: Session = Depends(get_db)):
 def tweets_API(account: str, db: Session = Depends(get_db)):
   the_account = db.query(models.Accounts).filter(
                   models.Accounts.username == account.lower()).first()
-  return the_account.actweets
+  return the_account.actweets[::-1]
 
 @app.get("/api/v1/replies/{account}")
 def last_ten_replies_API(account: str, db: Session = Depends(get_db)):
