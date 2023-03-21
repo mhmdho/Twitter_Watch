@@ -33,11 +33,11 @@
   <body class="u-body u-xl-mode" data-lang="en">
     <section class="u-align-center u-clearfix u-section-1" id="carousel_c6b5">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <p class="u-align-right u-text" style="position: absolute">
+        <p class="u-align-left u-large-text u-text u-text-palette-5-dark-1 u-text-variant u-text-1">
           <a class="u-btn u-button-link u-button-style u-none u-text-palette-1-base u-btn-1" href="/">back home</a>
         </p>
-        <h2 id="ac-title" class="u-custom-font u-font-montserrat u-text u-text-1"></h2>
-        <h6 id="ac-subtitle" class="u-custom-font u-font-montserrat u-text u-text-palette-1-base u-text-2"></h6>
+        <h2 id="ac-title" class="u-custom-font u-font-montserrat u-text u-text-2"></h2>
+        <h6 id="ac-subtitle" class="u-custom-font u-font-montserrat u-text u-text-palette-1-base u-text-3"></h6>
         <div class="u-clearfix u-layout-wrap u-layout-wrap-1">
           <div class="u-layout">
             <div class="u-layout-row">
@@ -71,9 +71,9 @@
                       </span>
                     </a>
                   </div>
-                  <h6 class="u-custom-font u-font-montserrat u-text u-text-default u-text-3">@{{username}}</h6>
+                  <h6 class="u-custom-font u-font-montserrat u-text u-text-default u-text-4">@{{username}}</h6>
                   <h8 id="ac-verify" 
-                    class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-1-base u-text-3">
+                    class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-1-base u-text-4">
                   </h8>
                   <p id="ac-desc" style="text-align: justify"></p>
                 </div>
@@ -94,20 +94,31 @@
         <div class="u-tab-links-align-justify u-tabs u-tabs-1">
           <ul class="u-spacing-0 u-tab-list u-unstyled" role="tablist">
             <li class="u-tab-item" role="presentation">
-              <a class="active u-active-custom-color-1 u-button-style u-tab-link u-text-active-black u-text-body-color u-text-hover-grey-75 u-tab-link-1" id="link-tab-0da5" href="#tab-0da5" role="tab" aria-controls="tab-0da5" aria-selected="true">Tweets</a>
+              <a class="active u-active-custom-color-1 u-button-style u-tab-link u-text-active-black u-text-body-color 
+                u-text-hover-grey-75 u-tab-link-1" 
+                id="link-tab-0da5" href="#tab-0da5" role="tab" aria-controls="tab-0da5" aria-selected="true">Tweets</a>
             </li>
             <li class="u-tab-item u-tab-item-2" role="presentation">
-              <a class="u-active-custom-color-1 u-button-style u-tab-link u-text-active-black u-text-body-color u-text-hover-grey-75 u-tab-link-2" id="link-tab-83f2" href="#tab-83f2" role="tab" aria-controls="tab-83f2" aria-selected="false"> Active Audience</a>
+              <a class="u-active-custom-color-1 u-button-style u-tab-link u-text-active-black u-text-body-color 
+                u-text-hover-grey-75 u-tab-link-2" 
+                id="link-tab-83f2" href="#tab-83f2" role="tab" aria-controls="tab-83f2" aria-selected="false">
+                Active Audience
+              </a>
             </li>
             <li class="u-tab-item u-tab-item-3" role="presentation">
-              <a class="u-active-custom-color-1 u-button-style u-tab-link u-text-active-black u-text-body-color u-text-hover-grey-75 u-tab-link-3" id="link-tab-9b93" href="#tab-9b93" role="tab" aria-controls="tab-9b93" aria-selected="false"> Last 10 Replies</a>
+              <a class="u-active-custom-color-1 u-button-style u-tab-link u-text-active-black u-text-body-color 
+                u-text-hover-grey-75 u-tab-link-3" id="link-tab-9b93" href="#tab-9b93" role="tab" 
+                aria-controls="tab-9b93" aria-selected="false">
+                Last 10 Replies
+              </a>
             </li>
           </ul>
           <div class="u-tab-content">
-            <div class="u-align-center u-container-style u-tab-active u-tab-pane u-white u-tab-pane-1" id="tab-0da5" role="tabpanel" aria-labelledby="link-tab-0da5">
+            <div class="u-align-center u-container-style u-tab-active u-tab-pane u-white u-tab-pane-1"
+              id="tab-0da5" role="tabpanel" aria-labelledby="link-tab-0da5">
               <div class="u-container-layout u-container-layout-1">
                 <div class="u-expanded-width u-table u-table-responsive u-table-1">
-                  <table class="u-table-entity">
+                  <table id="tweet-table" class="u-table-entity">
                     <colgroup>
                       <col width="10.3%">
                       <col width="10.6%">
@@ -123,39 +134,20 @@
                       </tr>
                     </thead>
                     <tbody class="u-align-center u-table-body">
-                      <tr style="height: 71px;">
-                        <td class="u-border-3 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-5">2017-03-33</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell"> cathiedwood</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">fff</td>
-                      </tr>
-                      <tr style="height: 71px;">
-                        <td class="u-border-3 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-9">Row 2</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                      </tr>
-                      <tr style="height: 71px;">
-                        <td class="u-border-3 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-13">Row 3</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                      </tr>
-                      <tr style="height: 71px;">
-                        <td class="u-border-3 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-17">Row 4</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                      </tr>
+
+                      <!-- tweets data -->
+                      
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
-            <div class="u-align-center u-container-style u-tab-pane u-white u-tab-pane-2" id="tab-83f2" role="tabpanel" aria-labelledby="link-tab-83f2">
+            
+            <div class="u-align-center u-container-style u-tab-pane u-white u-tab-pane-2"
+                  id="tab-83f2" role="tabpanel" aria-labelledby="link-tab-83f2">
               <div class="u-container-layout u-container-layout-2">
                 <div class="u-expanded-width u-table u-table-responsive u-table-2">
-                  <table class="u-table-entity">
+                  <table id="audience-table" class="u-table-entity">
                     <colgroup>
                       <col width="50.1%">
                       <col width="49.9%">
@@ -167,22 +159,9 @@
                       </tr>
                     </thead>
                     <tbody class="u-align-center u-table-body">
-                      <tr style="height: 71px;">
-                        <td class="u-border-3 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-23">2017-03-33</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                      </tr>
-                      <tr style="height: 71px;">
-                        <td class="u-border-3 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-25">Row 2</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                      </tr>
-                      <tr style="height: 71px;">
-                        <td class="u-border-3 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-27">Row 3</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                      </tr>
-                      <tr style="height: 71px;">
-                        <td class="u-border-3 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-29">Row 4</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                      </tr>
+                      
+                      <!-- Active audience data -->
+                    
                     </tbody>
                   </table>
                 </div>
@@ -191,7 +170,7 @@
             <div class="u-align-center u-container-style u-tab-pane u-white u-tab-pane-3" id="tab-9b93" role="tabpanel" aria-labelledby="link-tab-9b93">
               <div class="u-container-layout u-container-layout-3">
                 <div class="u-expanded-width u-table u-table-responsive u-table-3">
-                  <table class="u-table-entity">
+                  <table id="reply-table" class="u-table-entity">
                     <colgroup>
                       <col width="10.3%">
                       <col width="10.6%">
@@ -207,30 +186,9 @@
                       </tr>
                     </thead>
                     <tbody class="u-align-center u-table-body">
-                      <tr style="height: 71px;">
-                        <td class="u-border-3 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-35">2017-03-33</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell"> cathiedwood</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">fff</td>
-                      </tr>
-                      <tr style="height: 71px;">
-                        <td class="u-border-3 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-39">Row 2</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                      </tr>
-                      <tr style="height: 71px;">
-                        <td class="u-border-3 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-43">Row 3</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                      </tr>
-                      <tr style="height: 71px;">
-                        <td class="u-border-3 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-47">Row 4</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                        <td class="u-border-3 u-border-grey-30 u-table-cell">Description</td>
-                      </tr>
+
+                      <!-- Replies data -->
+                    
                     </tbody>
                   </table>
                 </div>
@@ -268,6 +226,54 @@
 
     });
 
+    fetch(`/api/v1/tweets/{{username}}`)
+      .then(response => response.json())
+      .then(data => {
+        const tableBody = document.querySelector('#tweet-table tbody');
+        tableBody.innerHTML = ''
+        data.forEach(row => {
+          const tableRow = document.createElement('tr');
+          tableRow.innerHTML = `
+            <td class="u-border-3 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-5">${row.date}</td>
+            <td class="u-border-3 u-border-grey-30 u-table-cell">${row.username}</td>
+            <td class="u-border-3 u-border-grey-30 u-table-cell">${row.content}</td>
+            <td class="u-border-3 u-border-grey-30 u-table-cell">${row.sentiment}</td>
+          `;
+          tableBody.appendChild(tableRow);
+        });
+      });
+
+        fetch(`/api/v1/audience/{{username}}`)
+      .then(response => response.json())
+      .then(data => {
+        const tableBody = document.querySelector('#audience-table tbody');
+        tableBody.innerHTML = ''
+        data.forEach(row => {
+          const tableRow = document.createElement('tr');
+          tableRow.innerHTML = `
+            <td class="u-border-3 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-23">@${row.User}</td>
+            <td class="u-border-3 u-border-grey-30 u-table-cell">${row.replies}</td>
+          `;
+          tableBody.appendChild(tableRow);
+        });
+      });
+
+        fetch(`/api/v1/replies/{{username}}`)
+      .then(response => response.json())
+      .then(data => {
+        const tableBody = document.querySelector('#reply-table tbody');
+        tableBody.innerHTML = ''
+        data.forEach(row => {
+          const tableRow = document.createElement('tr');
+          tableRow.innerHTML = `
+            <td class="u-border-3 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-35">${row.date}</td>
+            <td class="u-border-3 u-border-grey-30 u-table-cell">${row.username}</td>
+            <td class="u-border-3 u-border-grey-30 u-table-cell">${row.content}</td>
+            <td class="u-border-3 u-border-grey-30 u-table-cell">${row.sentiment}</td>
+          `;
+          tableBody.appendChild(tableRow);
+        });
+      });
     
   </script>
 
