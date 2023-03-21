@@ -33,7 +33,6 @@
 .u-section-1 .u-image-1 {
   width: 180px;
   height: 180px;
-  background-image: url("images/222.jpg");
   background-position: 50% 50%;
   margin: 8px auto 0;
 }
@@ -68,15 +67,6 @@
   padding: 10px 20px;
 }
 
-.u-section-1 .u-image-2 {
-  width: 180px;
-  height: 180px;
-  object-position: 50% 0%;
-  background-image: url("https://pbs.twimg.com/profile_images/1590968738358079488/IY9Gx6Ok_400x400.jpg");
-  background-position: 50% 50%;
-  margin: 8px auto 0;
-}
-
 .u-section-1 .u-text-5 {
   font-weight: 700;
   font-size: 1.25rem;
@@ -97,14 +87,6 @@
 
 .u-section-1 .u-container-layout-3 {
   padding: 10px 20px;
-}
-
-.u-section-1 .u-image-3 {
-  width: 180px;
-  height: 180px;
-  background-image: url("images/ff.jpg");
-  background-position: 50% 50%;
-  margin: 8px auto 0;
 }
 
 .u-section-1 .u-text-8 {
@@ -129,14 +111,6 @@
   padding: 10px 20px;
 }
 
-.u-section-1 .u-image-4 {
-  width: 180px;
-  height: 180px;
-  background-image: url("images/ff.jpg");
-  background-position: 50% 50%;
-  margin: 8px auto 0;
-}
-
 .u-section-1 .u-text-11 {
   font-weight: 700;
   font-size: 1.25rem;
@@ -159,14 +133,6 @@
   padding: 10px 20px;
 }
 
-.u-section-1 .u-image-5 {
-  width: 180px;
-  height: 180px;
-  background-image: url("images/ff.jpg");
-  background-position: 50% 50%;
-  margin: 8px auto 0;
-}
-
 .u-section-1 .u-text-14 {
   font-weight: 700;
   font-size: 1.25rem;
@@ -187,14 +153,6 @@
 
 .u-section-1 .u-container-layout-6 {
   padding: 10px 20px;
-}
-
-.u-section-1 .u-image-6 {
-  width: 180px;
-  height: 180px;
-  background-image: url("images/ff.jpg");
-  background-position: 50% 50%;
-  margin: 8px auto 0;
 }
 
 .u-section-1 .u-text-17 {
