@@ -132,5 +132,9 @@ async def index(request: Request):
 async def about_me(request: Request):
     return templates.TemplateResponse("about_me.html", {"request": request})
 
+@app.get("/{account}")
+async def account(account: str, request: Request):
+    return templates.TemplateResponse("account.html", {"request": request, "username": account})
+
 
 uvicorn.run(app, port = 8080, host = "0.0.0.0")
