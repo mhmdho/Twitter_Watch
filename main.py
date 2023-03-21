@@ -69,23 +69,23 @@ def tweets_task5():
 
 
 @app.get("/api/v1/accounts")
-def accounts_api(db: Session = Depends(get_db)):
+def accounts_API(db: Session = Depends(get_db)):
   return db.query(models.Accounts).all()
 
 @app.get("/api/v1/tweets/{account}")
-def tweets_api(account: str, db: Session = Depends(get_db)):
+def tweets_API(account: str, db: Session = Depends(get_db)):
   the_account = db.query(models.Accounts).filter(
                   models.Accounts.username == account.lower()).first()
   return the_account.actweets
 
 @app.get("/api/v1/replies/{account}")
-def replies_api(account: str, db: Session = Depends(get_db)):
+def last_ten_replies_API(account: str, db: Session = Depends(get_db)):
   the_account = db.query(models.Accounts).filter(
                   models.Accounts.username == account.lower()).first()
-  return the_account.acreplies
+  return the_account.acreplies[-10:]
 
 @app.get("/api/v1/audience/{account}")
-def audience_api(account: str, db: Session = Depends(get_db)):
+def audience_API(account: str, db: Session = Depends(get_db)):
   the_account = (db.query(models.Accounts)
                    .filter(models.Accounts.username == account.lower())
                    .first())
@@ -99,7 +99,7 @@ def audience_api(account: str, db: Session = Depends(get_db)):
   return result
 
 @app.get("/api/v1/sentiment/{account}")
-def sentiment_api(account: str, db: Session = Depends(get_db)):
+def sentiment_API(account: str, db: Session = Depends(get_db)):
   the_account = (db.query(models.Accounts)
                    .filter(models.Accounts.username == account.lower())
                    .first())
@@ -114,7 +114,7 @@ def sentiment_api(account: str, db: Session = Depends(get_db)):
   return sentiment
 
 @app.get("/api/v1/accounts/sentiment")
-def ac_sentiment_api(db: Session = Depends(get_db)):
+def account_sentiment_API(db: Session = Depends(get_db)):
   sentiment = (db.query(models.Accounts.username.label('Username'),
                         ((func.avg(models.Tweets.sentiment) +
                          func.avg(models.Replies.sentiment))/2).label('account_sentiment'))
